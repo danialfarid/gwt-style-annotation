@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='style_annotation_sample'>
+	<inherits name='com.google.gwt.user.User'/>
+	<inherits name="com.df.gwt.style.annotation.StyleAnnotation"/>
+
+	<inherits name='com.google.gwt.user.theme.clean.Clean'/>
+  
+	<entry-point class='com.df.gwt.style.annotation.sample.client.StyleAnnotationSample'/>  
+</module>

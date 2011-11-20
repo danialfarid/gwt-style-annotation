@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<inherits name="com.google.gwt.core.Core"/>
+
+	<generate-with class="com.df.gwt.style.annotation.StyledWidgetGenerator">
+		<!-- You can overwrite this in your module to narrow down the search
+			Here it checks all Widgets that are created through GWT.create() method for annotations,
+			So if you create an interface for the annotated widgets to implement, and overwrite 
+			the condition here with that interface, it can potentially improve the compile time. 
+		-->
+  		<when-type-assignable class="com.google.gwt.user.client.ui.Widget"/>
+	</generate-with>
+
+	<!-- This property can narrow down the search for style annotations in java files
+		By default all Widgets in the classpath will be searched for style annotations
+		and potentially improve the compile time.
+		It can only set the prefix for search so for example both "somePackage.client.*" and 
+		"somePackage.client" will match all classes in that package and nested packages.
+		Since this property is multi valued, you can just add individual classes to further 
+		restrict the converted classes.
+	-->	
+	<define-configuration-property name="StyleAnnotation.includePrefix" is_multi_valued="true"/>
+	<define-configuration-property name="StyleAnnotation.excludePrefix" is_multi_valued="true"/>
+	
+	<set-configuration-property name="StyleAnnotation.excludePrefix" value="com.google.gwt.user.*" />
+	<set-configuration-property name="CssResource.obfuscationPrefix" value="sa-" />
+</module>

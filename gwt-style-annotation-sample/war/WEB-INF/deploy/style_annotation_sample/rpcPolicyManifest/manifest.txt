@@ -1,0 +1,2 @@
+# Module style_annotation_sample
+# RPC service class, partial path of RPC policy file
