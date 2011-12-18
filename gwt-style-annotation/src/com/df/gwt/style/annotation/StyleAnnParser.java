@@ -99,10 +99,12 @@ public class StyleAnnParser {
 		if (!styleData.isUserDefinedAnnotation && styleData.initStyleData.size() > 0 &&
 				(clazz.isFinal() || (clazz.getConstructors().length > 0 && clazz.findConstructor(new JType[0]) == null)) ||
 				(clazz.isMemberType() && !clazz.isStatic())) {
-			logger.log(TreeLogger.ERROR, "Fix annotation style for class '" + clazz + "'",
-					new StyleRuleSemanticException("CSS Style Annotation is not allowed on " +
-					"'final' class, class with no 'default (zero argument) constructors' or 'non-static inner class'. "));
-			throw new UnableToCompleteException();
+			if (!styleData.isEmpty()) {
+				logger.log(TreeLogger.ERROR, "Fix annotation style for class '" + clazz + "'",
+						new StyleRuleSemanticException("CSS Style Annotation is not allowed on " +
+								"'final' class, class with no 'default (zero argument) constructors' or 'non-static inner class'. "));
+				throw new UnableToCompleteException();
+			}
 		}
 		return styleData;
 	}
